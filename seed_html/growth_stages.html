@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Stages </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="date"], select, textarea, button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Growth Stages Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Growth Stage ID</th>
+                <th>Sowing ID</th>
+                <th>Stage Name</th>
+                <th>Observed Date</th>
+                <th>Notes</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Placeholder for growth stage records -->
+        </tbody>
+    </table>
+
+    <div class="form-container">
+        <h2>Add New Growth Stage</h2>
+        <form action="add_growth_stage.php" method="POST">
+            <label for="sowing_id">Sowing ID:</label>
+            <input type="number" id="sowing_id" name="sowing_id" required>
+
+            <label for="stage_name">Stage Name:</label>
+            <select id="stage_name" name="stage_name" required>
+                <option value="Germination">Germination</option>
+                <option value="Vegetative">Vegetative</option>
+                <option value="Flowering">Flowering</option>
+                <option value="Fruiting">Fruiting</option>
+                <option value="Maturity">Maturity</option>
+            </select>
+
+            <label for="observed_date">Observed Date:</label>
+            <input type="date" id="observed_date" name="observed_date" required>
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" rows="3"></textarea>
+
+            <button type="submit">Add Growth Stage</button>
+        </form>
+    </div>
+</body>
+</html>

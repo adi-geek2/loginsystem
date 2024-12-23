@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Quality Test Management</title>
+</head>
+<body>
+    <h1>Add Seed Quality Test</h1>
+    <form action="upload_image_server.php" method="POST" enctype="multipart/form-data">
+        <label for="seed_id">Seed ID:</label>
+        <input type="number" id="seed_id" name="seed_id" required><br>
+
+        <label for="test_date">Test Date:</label>
+        <input type="date" id="test_date" name="test_date" required><br>
+
+        <label for="testing_lab">Testing Lab:</label>
+        <input type="text" id="testing_lab" name="testing_lab" required><br>
+
+        <label for="test_type">Test Type:</label>
+        <select id="test_type" name="test_type" required>
+            <option value="Germination">Germination</option>
+            <option value="Purity">Purity</option>
+            <option value="Moisture Content">Moisture Content</option>
+            <option value="Seed Health">Seed Health</option>
+            <option value="Viability">Viability</option>
+        </select><br>
+
+        <label for="conducted_by">Conducted By:</label>
+        <input type="text" id="conducted_by" name="conducted_by" required><br>
+
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes" rows="3"></textarea><br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

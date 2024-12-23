@@ -169,3 +169,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Exclude image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.ico
+*.svg

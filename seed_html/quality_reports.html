@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Reports </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="date"], select, textarea, button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quality Reports Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Report ID</th>
+                <th>Test ID</th>
+                <th>Report Date</th>
+                <th>Certification Status</th>
+                <th>Certification Body</th>
+                <th>Report Summary</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Placeholder for quality report records -->
+        </tbody>
+    </table>
+
+    <div class="form-container">
+        <h2>Add New Quality Report</h2>
+        <form action="add_quality_report.php" method="POST">
+            <label for="test_id">Test ID:</label>
+            <input type="number" id="test_id" name="test_id" required>
+
+            <label for="report_date">Report Date:</label>
+            <input type="date" id="report_date" name="report_date" required>
+
+            <label for="certification_status">Certification Status:</label>
+            <select id="certification_status" name="certification_status" required>
+                <option value="Certified">Certified</option>
+                <option value="Not Certified">Not Certified</option>
+                <option value="Pending">Pending</option>
+            </select>
+
+            <label for="certification_body">Certification Body:</label>
+            <input type="text" id="certification_body" name="certification_body">
+
+            <label for="report_summary">Report Summary:</label>
+            <textarea id="report_summary" name="report_summary" rows="3"></textarea>
+
+            <button type="submit">Add Quality Report</button>
+        </form>
+    </div>
+</body>
+</html>

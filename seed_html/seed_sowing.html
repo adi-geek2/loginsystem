@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Sowing </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], select, textarea, button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seed Sowing Management</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sowing ID</th>
+                <th>Seed ID</th>
+                <th>Farmer ID</th>
+                <th>Sowing Date</th>
+                <th>Field Location</th>
+                <th>Land Size (Acres)</th>
+                <th>Sowing Method</th>
+                <th>Fertilizer Used</th>
+                <th>Irrigation Type</th>
+                <th>Expected Harvest Date</th>
+                <th>Notes</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Placeholder for sowing records -->
+        </tbody>
+    </table>
+
+    <div class="form-container">
+        <h2>Add New Sowing Record</h2>
+        <form action="add_sowing.php" method="POST">
+            <label for="seed_id">Seed ID:</label>
+            <input type="number" id="seed_id" name="seed_id" required>
+
+            <label for="farmer_id">Farmer ID:</label>
+            <input type="number" id="farmer_id" name="farmer_id" required>
+
+            <label for="sowing_date">Sowing Date:</label>
+            <input type="date" id="sowing_date" name="sowing_date" required>
+
+            <label for="field_location">Field Location:</label>
+            <textarea id="field_location" name="field_location" rows="3" required></textarea>
+
+            <label for="land_size">Land Size (Acres):</label>
+            <input type="number" id="land_size" name="land_size" step="0.01" required>
+
+            <label for="sowing_method">Sowing Method:</label>
+            <select id="sowing_method" name="sowing_method" required>
+                <option value="Broadcasting">Broadcasting</option>
+                <option value="Drilling">Drilling</option>
+                <option value="Transplanting">Transplanting</option>
+                <option value="Manual">Manual</option>
+                <option value="Machine-Assisted">Machine-Assisted</option>
+            </select>
+
+            <label for="fertilizer_used">Fertilizer Used:</label>
+            <input type="text" id="fertilizer_used" name="fertilizer_used">
+
+            <label for="irrigation_type">Irrigation Type:</label>
+            <select id="irrigation_type" name="irrigation_type" required>
+                <option value="Rainfed">Rainfed</option>
+                <option value="Irrigated">Irrigated</option>
+                <option value="Mixed">Mixed</option>
+            </select>
+
+            <label for="expected_harvest_date">Expected Harvest Date:</label>
+            <input type="date" id="expected_harvest_date" name="expected_harvest_date">
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" rows="3"></textarea>
+
+            <button type="submit">Add Sowing Record</button>
+        </form>
+    </div>
+</body>
+</html>
