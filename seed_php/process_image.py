@@ -6,17 +6,23 @@ import torch.nn as nn
 from torchvision import transforms, models
 from PIL import Image
 import warnings
+from ultralytics import YOLO
 
 # Suppress warnings related to torch.load
 warnings.filterwarnings("ignore", category=FutureWarning)
 
-# Function to load the pre-trained model
-def load_model():
+# Function to load the pre-trained mobilnet model
+def load_model_mobilnet():
     model = models.mobilenet_v3_large()
     num_classes = 2
     model.classifier[3] = nn.Linear(model.classifier[3].in_features, num_classes)
     model.load_state_dict(torch.load("mobilenet_weights_20241129_132949.pth", map_location=torch.device("cpu"), weights_only=True))
     model.eval()
+    return model
+
+# Function to load the pre-trained yolo v11 model
+def load_model_yolo():
+    model = YOLO("yolo11_v1.pt")
     return model
 
 
@@ -43,9 +49,9 @@ if __name__ == "__main__":
         input_tensor = preprocess_image(image_path)
 
         # Load model and predict
-        model = load_model()
+        mobilnet_model = load_model_mobilnet()
         with torch.no_grad():
-            output = model(input_tensor)
+            output = mobilnet_model(input_tensor)
             predicted_class = torch.argmax(output, dim=1).item()
 
         # Map prediction to class labels
@@ -54,6 +60,18 @@ if __name__ == "__main__":
         # Return result as JSON
         result = {
             "quality": class_labels[predicted_class],
+        }
+        #print(f"mobilnet:")
+        #print(json.dumps(result))
+
+        #Yolo
+        #print("yolo:")
+        yolo_model = load_model_yolo()
+        with torch.no_grad():
+            output = yolo_model(image_path, verbose=False)
+        #print(class_labels[output[0].probs.top1])
+        result = {
+            "quality": class_labels[output[0].probs.top1],
         }
         print(json.dumps(result))
     except Exception as e:
