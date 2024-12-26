@@ -24,9 +24,8 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">   Seed Quality Assessment</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                            <li class="breadcrumb-item"><a href="./seed_html/landing_page.html">Home</a></li>
               
                         </ol>
         <div class="row" >

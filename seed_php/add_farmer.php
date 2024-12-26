@@ -1,7 +1,7 @@
 <?php
 // Database connection details
 $host = 'localhost';
-$dbname = 'farmerinformation';
+$dbname = 'loginsystem';
 $username = 'root';
 $password = '';
 

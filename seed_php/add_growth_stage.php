@@ -3,7 +3,7 @@
 $servername = "localhost"; // Update as needed
 $username = "root";        // Update as needed
 $password = "";            // Update as needed
-$dbname = "FarmerInformation"; // Update as needed
+$dbname = "loginsystem"; // Update as needed
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

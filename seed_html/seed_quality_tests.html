@@ -4,38 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seed Quality Test Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-container form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .form-container label {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+        }
+        .form-container input, .form-container select, .form-container textarea {
+            padding: 8px;
+            width: 250px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Add Seed Quality Test</h1>
-    <form action="upload_image_server.php" method="POST" enctype="multipart/form-data">
-        <label for="seed_id">Seed ID:</label>
-        <input type="number" id="seed_id" name="seed_id" required><br>
+    <h3>Seed Quality Test Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Seed ID</th>
+                <th>Test Date</th>
+                <th>Testing Lab</th>
+                <th>Test Type</th>
+                <th>Conducted By</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example Data -->
+            <tr>
+                <td>101</td>
+                <td>2024-12-01</td>
+                <td>Agro Labs</td>
+                <td>Germination</td>
+                <td>Dr. Smith</td>
+                <td>Healthy seeds.</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>2024-12-02</td>
+                <td>Seed Health Lab</td>
+                <td>Purity</td>
+                <td>Dr. Brown</td>
+                <td>High purity level.</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>2024-12-03</td>
+                <td>Green Labs</td>
+                <td>Moisture Content</td>
+                <td>Dr. Lee</td>
+                <td>Moisture within acceptable limits.</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <label for="test_date">Test Date:</label>
-        <input type="date" id="test_date" name="test_date" required><br>
+    <div class="form-container">
+        <h3>Add Seed Quality Test</h3>
+        <form action="upload_image_server.php" method="POST" enctype="multipart/form-data">
+            <label for="seed_id">Seed ID:</label>
+            <input type="number" id="seed_id" name="seed_id" required><br>
 
-        <label for="testing_lab">Testing Lab:</label>
-        <input type="text" id="testing_lab" name="testing_lab" required><br>
+            <label for="test_date">Test Date:</label>
+            <input type="date" id="test_date" name="test_date" required><br>
 
-        <label for="test_type">Test Type:</label>
-        <select id="test_type" name="test_type" required>
-            <option value="Germination">Germination</option>
-            <option value="Purity">Purity</option>
-            <option value="Moisture Content">Moisture Content</option>
-            <option value="Seed Health">Seed Health</option>
-            <option value="Viability">Viability</option>
-        </select><br>
+            <label for="testing_lab">Testing Lab:</label>
+            <input type="text" id="testing_lab" name="testing_lab" required><br>
 
-        <label for="conducted_by">Conducted By:</label>
-        <input type="text" id="conducted_by" name="conducted_by" required><br>
+            <label for="test_type">Test Type:</label>
+            <select id="test_type" name="test_type" required>
+                <option value="Germination">Germination</option>
+                <option value="Purity">Purity</option>
+                <option value="Moisture Content">Moisture Content</option>
+                <option value="Seed Health">Seed Health</option>
+                <option value="Viability">Viability</option>
+            </select><br>
 
-        <label for="notes">Notes:</label>
-        <textarea id="notes" name="notes" rows="3"></textarea><br>
+            <label for="conducted_by">Conducted By:</label>
+            <input type="text" id="conducted_by" name="conducted_by" required><br>
 
-        <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required><br>
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" rows="3"></textarea><br>
 
-        <button type="submit">Submit</button>
-    </form>
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
+    
+    <a href="landing_page.html" class="btn btn-primary">Back</a>
+
+    <!-- Optional Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
