@@ -29,7 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo "Error: " . htmlspecialchars($result['error']);
                 } elseif (isset($result['quality'])) {
                     $quality = $result['quality'];
-                    header("Location: result.php?quality=" . urlencode($quality));
+                    $score = $result['score'];
+                    header("Location: result.php?quality=" . urlencode($quality) . "&image=" . urlencode(
+                        $fileName)."&score=". urlencode($score));
                     exit;
                 } else {
                     echo "Error processing the image. Output: $output";

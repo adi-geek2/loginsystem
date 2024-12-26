@@ -1,4 +1,5 @@
 # Seed quality assessment using MobileNetV3
+# Seed quality assessment using MobileNetV3 
 import sys
 import json
 import torch
@@ -25,7 +26,6 @@ def load_model_yolo():
     model = YOLO("yolo11_v1.pt")
     return model
 
-
 # Preprocessing pipeline for images
 def preprocess_image(image_path):
     transform = transforms.Compose([
@@ -35,7 +35,6 @@ def preprocess_image(image_path):
     ])
     image = Image.open(image_path).convert('RGB')  # Open and convert to RGB
     return transform(image).unsqueeze(0)  # Add batch dimension
-
 
 # Main function
 if __name__ == "__main__":
@@ -48,30 +47,51 @@ if __name__ == "__main__":
         # Preprocess the image
         input_tensor = preprocess_image(image_path)
 
-        # Load model and predict
+        # Load MobilNet model and predict
         mobilnet_model = load_model_mobilnet()
         with torch.no_grad():
             output = mobilnet_model(input_tensor)
             predicted_class = torch.argmax(output, dim=1).item()
+            quality_score = torch.softmax(output, dim=1)[0][predicted_class].item()
 
         # Map prediction to class labels
         class_labels = {0: "Bad Seed", 1: "Good Seed"}
 
-        # Return result as JSON
-        result = {
+        # Add MobilNet result
+        mobilnet_result = {
+            "model": "MobilNetV3",
             "quality": class_labels[predicted_class],
+            "score": round(quality_score, 4),  # Include score rounded to 4 decimals
         }
-        #print(f"mobilnet:")
-        #print(json.dumps(result))
 
-        #Yolo
-        #print("yolo:")
+        # Load YOLO model and predict
         yolo_model = load_model_yolo()
         with torch.no_grad():
-            output = yolo_model(image_path, verbose=False)
-        #print(class_labels[output[0].probs.top1])
+            results = yolo_model(image_path, verbose=False)
+            predicted_class = results[0].probs.top1  # Predicted class from YOLO
+            quality_score = results[0].probs.top1conf.item()  # Confidence score
+
+        # Add YOLO result
+        yolo_result = {
+            "model": "YOLOv11",
+            "quality": class_labels[predicted_class],
+            "score": round(quality_score, 4),  # Include score rounded to 4 decimals
+        }
+
+    #     # Combine results
+    #     combined_result = {
+    #         "mobilnet": mobilnet_result,
+    #         "yolo": yolo_result,
+    #     }
+
+    #     print(json.dumps(combined_result))
+    # except Exception as e:
+    #     # Handle any errors
+    #     print(json.dumps({"error": str(e)}))
+
         result = {
-            "quality": class_labels[output[0].probs.top1],
+            "quality": yolo_result["quality"],
+            "score": yolo_result["score"]
         }
         print(json.dumps(result))
     except Exception as e:
